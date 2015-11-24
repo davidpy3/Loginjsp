@@ -5,13 +5,14 @@
  */
 package Dao;
 
+import static Dao.ObjetoConexion.conectarSQL;
 import java.sql.*;
 
 /**
  *
  * @author davidxona
  */
-public class Consultas extends Conexion{
+public class Consultas extends Conexionnn{
     
     public boolean autenticacion(String usr, String pass){
         
@@ -23,7 +24,8 @@ public class Consultas extends Conexion{
             String sql="SELECT     * FROM         Usuario \n" +
 "inner join personal on personal.dni=Usuario.dni \n" +
 "where usuario.usuario=? and personal.DNI=?";
-            ps=getConexion().prepareStatement(sql);
+//            ps=getConexion().prepareStatement(sql);
+               ps=conectarSQL().prepareStatement(sql);
             ps.setString(1, usr);
             ps.setString(2, pass);
             rs=ps.executeQuery();
